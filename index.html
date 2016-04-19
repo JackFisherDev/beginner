@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Exam (Rybalchenko)</title>
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div id="start">
+		<img src="img/logo1.png" alt="">
+		<h1>Добро пожаловать!</h1>
+		<h2>Вас приветствует одна из самых популярных игр в мире, игра <q>Кто хочет стать миллионером?</q>.</h2>
+		<h2><q>Хотите выиграть миллион? Тогда вперед!</q></h2>
+		<h2>Желаем  удачи!</h2>
+		<p><input type="text" name="user" id="user" placeholder="Ваше имя"></p>
+		<p><button id="enter" onclick="enterInGame()"><i class="fa fa-sign-in"></i>&nbsp;Вход</button></p>
+	</div>
+	<div id="wrapper">
+		<div id="header">
+			<ul id="menu">
+				<li><a href="index.html" id="rulesLink">Правила игры</a></li>
+				<li><a href="index.html" id="recordLink">Рекорды</a></li>
+			</ul>
+		</div>
+
+		<div id="user-statistic">
+			<button type="button" id="gameStart" onclick="gameStart()">Начать игру</button>
+			<h3>Игрок: <span class="player"></span><span id="bank">Bank: 0 $</span><button type="button" disabled id="out"><i class="fa fa-money"></i>&nbsp;Забрать деньги</button></h3>
+		</div>
+
+		<div id="game">
+
+			<div id="table">
+				<table>
+					<tr>
+						<th>15</th>
+						<td><div class="line"></div></td>
+						<td>1 000 000</td>
+					</tr>
+					<tr>
+						<th>14</th>
+						<td><div class="line"></div></td>
+						<td>500 000</td>
+					</tr>
+					<tr>
+						<th>13</th>
+						<td><div class="line"></div></td>
+						<td>250 000</td>
+					</tr>
+					<tr>
+						<th>12</th>
+						<td><div class="line"></div></td>
+						<td>125 000</td>
+					</tr>
+					<tr>
+						<th>11</th>
+						<td><div class="line"></div></td>
+						<td>64 000</td>
+					</tr>
+					<tr>
+						<th>10</th>
+						<td><div class="line"></div></td>
+						<td>32 000</td>
+					</tr>
+					<tr>
+						<th>9</th>
+						<td><div class="line"></div></td>
+						<td>16 000</td>
+					</tr>
+					<tr>
+						<th>8</th>
+						<td><div class="line"></div></td>
+						<td>8 000</td>
+					</tr>
+					<tr>
+						<th>7</th>
+						<td><div class="line"></div></td>
+						<td>4 000</td>
+					</tr>
+					<tr>
+						<th>6</th>
+						<td><div class="line"></div></td>
+						<td>2 000</td>
+					</tr>
+					<tr>
+						<th>5</th>
+						<td><div class="line"></div></td>
+						<td>1 000</td>
+					</tr>
+					<tr>
+						<th>4</th>
+						<td><div class="line"></div></td>
+						<td>500</td>
+					</tr>
+					<tr>
+						<th>3</th>
+						<td><div class="line"></div></td>
+						<td>300</td>
+					</tr>
+					<tr>
+						<th>2</th>
+						<td><div class="line"></div></td>
+						<td>200</td>
+					</tr>
+					<tr>
+						<th>1</th>
+						<td><div class="line"></div></td>
+						<td>100</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div id="main">
+				<div id="hints">
+					<ul>
+						<li><button type="button" disabled class="fifty"></button></li>
+						<li><button type="button" disabled class="phoneCall"></button></li>
+						<li><button type="button" disabled class="auditory"></button></li>
+					</ul>
+				</div>
+			
+				<div>
+					<span id="timer"></span>
+				</div>
+			
+				<div id="QA">
+					<div id="question">
+						<p id="quest">Вопрос</p>
+					</div>
+					<form action="" name="answersForm">
+						<label class="choise">
+							<input type="radio" name="answer" value="0">
+							<span class="variantAnswer">Вариант 1</span>
+						</label>
+						<label class="choise">
+							<input type="radio" name="answer" value="1">
+							<span class="variantAnswer">Вариант 2</span>
+						</label>
+						<label class="choise">
+							<input type="radio" name="answer" value="2">
+							<span class="variantAnswer">Вариант 3</span>
+						</label>
+						<label class="choise">
+							<input type="radio" name="answer" value="3">
+							<span class="variantAnswer">Вариант 4</span>
+						</label>
+						<button type="button" disabled id="answer">Ответить</button>
+					</form>
+				</div>
+			</div>
+
+			<div id="information">
+				<div id="rules">
+					<span class="closeWindow ok"><i class="fa fa-close"></i></span>
+					<h2>Правила игры</h2>
+					<p>Для того, чтобы выиграть миллион, вам необходимо правильно ответить на 15 вопросов, к каждому вопросу предлагается 4 варианта ответа. Во время игры можно воспользоваться подсказками:</p>
+					<ul class="info-hints">
+					 	<li>
+					 		<figure>
+					 			<span class="fifty"></span>
+					 			<figcaption>50 / 50</figcaption>
+					 		</figure>
+					 	</li>
+					 	<li>
+					 		<figure>
+					 			<span class="phoneCall"></span>
+					 			<figcaption>Звонок другу</figcaption>
+					 		</figure>
+					 	</li>
+					 	<li>
+					 		<figure>
+					 			<span class="auditory"></span>
+					 			<figcaption>Помощь зала</figcaption>
+					 		</figure>
+					 	</li>
+					</ul>
+					<ul>
+						<li>50 на 50 - воспользовавшись этой подсказкой, компьютер убирает 2 неверных варианта ответа, участнику остается выбрать только между двумя вариантами;</li>
+						<li>Звонок другу - участник может позвонить по любому номеру и задать вопрос, на который он затрудняется ответить;</li>
+						<li>Помощь зала - все зрители голосуют за правильный ответ и результат показывается участнику, он может согласится с мнением зала или выбрать другой вариант ответа.</li>
+					</ul>
+					<p>Во время игры можно дойти до несгораемых сумм: <span class="garranty-summ">1 000 $</span> и <span class="garranty-summ">32 000 $</span> ответив верно на пятый и десятый вопросы. В случае проигрыша за участником остается несгораемая сумма, если он успел дойти до нее. А также вы можете забрать свой выигрыш нажав кнопку <span class="get-money"><i class="fa fa-money"></i>&nbsp;Забрать деньги</span></p>
+					<p><a href="index.html" class="ok">Закрыть</a></p>
+				</div>
+
+				<div id="record">
+					<span class="closeWindow ok"><i class="fa fa-close"></i></span>
+					<h2>Рекорды</h2>
+					<p>Ваши рекорды:</p>
+					<ul>
+						<li>1 000 000</li>
+						<li>32 000</li>
+						<li>1 000</li>
+					</ul>
+					<p><a href="index.html" class="ok">Закрыть</a></p>
+				</div>
+			</div>
+
+			<div id="getHint">
+				<div id="phoneCall">
+					<span class="closeWindow ok"><i class="fa fa-close"></i></span>
+					<h2>Звонок другу</h2>
+					<p>Привет, <span class="player"></span>! Я думаю что ответ <span id="friendHelp"></span>)</p>
+					<p><a href="index.html" class="ok">Закрыть</a></p>
+				</div>
+				<div id="auditory">
+					<span class="closeWindow ok"><i class="fa fa-close"></i></span>
+					<h2>Подсказка зала</h2>
+					<ul id="auditVar">
+						<li>A: <span class="audit"></span></li>
+						<li>B: <span class="audit"></span></li>
+						<li>C: <span class="audit"></span></li>
+						<li>D: <span class="audit"></span></li>
+					</ul>
+					<p><a href="index.html" class="ok">Закрыть</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="enter-warning">
+		<div id="warning-message">
+			<h2>Ошибка</h2>
+			<p>Пожайлуста, введите своё имя без пробелов и знаков препинания.</p>
+			<p><button class="ok">Ok</button></p>
+		</div>
+	</div>
+
+	<div id="win">
+		<div id="yourWin">
+			<h2>Ваш выигрыш</h2>
+			<h3 id="sumWin"></h3>
+			<p><button type="submit" onclick="location.reload(true)" class="startAgain">Начать заново</button></p>
+		</div>
+	</div>
+	
+	<script src="js/jquery-1.12.1.min.js"></script>
+	<script src="js/game.js"></script>
+</body>
+</html>
