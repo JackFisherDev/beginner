@@ -48,18 +48,18 @@ Math.rand = function(n, m) {
 }
 
 function Stars(size, color) {
-	this.size = size || 3;
+	var size = size || 3;
 	this.color = color || "#fdfdfd";
 
 	this.div = document.createElement('div');
 			
-	var s = "width: " + this.size + "px;";
-		s += "height: " + this.size + "px;";
+	var s = "width: " + size + "px;";
+		s += "height: " + size + "px;";
 		s += "background: " + this.color + ";";
 		s += "border-radius: 50%;";
 		s += "position: absolute;";
-		s += "top: " + Math.rand(0, window.innerHeight - this.size) + "px;";
-		s += "left: " + Math.rand(0, window.innerWidth - this.size) + "px;";
+		s += "top: " + Math.rand(0, window.innerHeight - size) + "px;";
+		s += "left: " + Math.rand(0, window.innerWidth - size) + "px;";
 
 	this.div.style.cssText = s;
 
