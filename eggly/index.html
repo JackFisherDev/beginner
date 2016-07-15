@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Eggly">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Eggly</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-controller="MainCtrl">
+    
+    <div class="container">
+      
+      <div class="row">
+        
+        <h2><a href="#" ng-click="setCurrentCategory(null)">Logo</a></h2>
+        
+        <div class="col-sm-4">
+          <ul>
+            <li ng-repeat="category in categories" ng-class="{'activeClass':isCurrentCategory(category)}">
+            <a href="#" ng-click="setCurrentCategory(category)">{{category.name}}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-8">
+          <div ng-repeat="bookmark in bookmarks | filter: {category:currentCategory.name}">
+            <button type="button" class="close">&times;</button>
+            <button type="button" ng-click="startEditing()" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
+            <a href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a>
+          </div>
+          <hr>
+          <div ng-if="shouldShowCreating()">
+            <button type="button" class="btn btn-link" ng-click="startCreating()">
+              <span class="glyphicon glyphicon-plus"></span>Create Bookmark
+            </button>
+
+            <form class="create-form" ng-show="isCreating" role="form" ng-submit="createBookmark(newBookmark)" novalidate>
+              <div class="form-group">
+                <label for="newBookmarkTitle">Bookmark Title</label>
+                <input type="text" class="form-control" id="newBookmarkTitle" placeholder="Enter title" ng-model="newBookmark.title">
+              </div>
+              <div class="form-group">
+                <label for="newBookmarkURL">Bookmark URL</label>
+                <input type="text" class="form-control" id="newBookmarkURL" placeholder="Enter URL" ng-model="newBookmark.url">
+              </div>
+              <input type="submit" class="btn btn-info" value="Create">
+              <button type="button" class="btn btn-default pull-right" ng-click="cancelCreating()">Cancel</button>
+            </form>
+
+          </div>
+          
+          <div ng-if="shouldShowEditing()">
+            Edit a bookmark
+            <button type="button" class="btn btn-default pull-right" ng-click="cancelEditing()">Cancel</button>
+          </div>
+        </div>
+      
+      </div>
+    
+    </div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="js/eggly-app.start.js"></script>
+  </body>
+</html>
