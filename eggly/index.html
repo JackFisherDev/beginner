@@ -35,9 +35,9 @@
         </div>
 
         <div class="col-sm-8">
-          <div ng-repeat="bookmark in bookmarks | filter: {category:currentCategory.name}">
-            <button type="button" class="close">&times;</button>
-            <button type="button" ng-click="startEditing()" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
+          <div ng-class="{'activeBookmark':isSelectedBookmark(bookmark.id)}" ng-repeat="bookmark in bookmarks | filter: {category:currentCategory.name}">
+            <button type="button" class="close" ng-click="deleteBookmark(bookmark)">&times;</button>
+            <button type="button" ng-click="setEditedBookmark(bookmark);startEditing()" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
             <a href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a>
           </div>
           <hr>
@@ -60,10 +60,21 @@
             </form>
 
           </div>
-          
+          <!-- Editing -->
           <div ng-if="shouldShowEditing()">
-            Edit a bookmark
-            <button type="button" class="btn btn-default pull-right" ng-click="cancelEditing()">Cancel</button>
+            <h4>Editing {{editedBookmark.title}}</h4>
+            <form class="edit-form" role="form" ng-submit="updateBookmark(editedBookmark)" novalidate>
+              <div class="form-group">
+                <label>Bookmark Title</label>
+                <input type="text" class="form-control" placeholder="Enter title" ng-model="editedBookmark.title">
+              </div>
+              <div class="form-group">
+                <label>Bookmark URL</label>
+                <input type="text" class="form-control" placeholder="Enter URL" ng-model="editedBookmark.url">
+              </div>
+              <input type="submit" class="btn btn-info" value="Save">
+              <button type="button" class="btn btn-default pull-right" ng-click="cancelEditing()">Cancel</button>
+            </form>
           </div>
         </div>
       

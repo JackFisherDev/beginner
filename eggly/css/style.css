@@ -5,3 +5,7 @@ body {
 .activeClass {
 	background: #bbb;
 }
+
+.activeBookmark>a {
+	color: #494;
+}
