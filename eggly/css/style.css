@@ -1,0 +1,11 @@
+body {
+	background: #cee;
+}
+
+.activeClass {
+	background: #bbb;
+}
+
+.activeBookmark>a {
+	color: #494;
+}
