@@ -20,7 +20,7 @@ function Planet(planet, radius, center, speed){
 
 	var L = 30;
 
-	console.log(space.planetName);
+	// console.log(space.planetName);
 
 	return setInterval(function() {
 		L += 1;
